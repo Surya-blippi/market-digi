@@ -138,3 +138,36 @@ html {
   animation: gradient-xy 15s ease infinite;
   background-size: 400% 400%;
 }
+
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-desktop {
+  animation: scroll 30s linear infinite;
+}
+
+.animate-scroll-mobile {
+  animation: scroll 15s linear infinite; /* Faster animation for mobile */
+}
+
+/* Pause animation when device supports hover */
+@media (hover: hover) {
+  .animate-scroll-desktop:hover,
+  .animate-scroll-mobile:hover {
+    animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-scroll-desktop,
+  .animate-scroll-mobile {
+    animation: none;
+  }
+}

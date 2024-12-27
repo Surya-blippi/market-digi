@@ -4,6 +4,21 @@ import { useState, useEffect } from 'react';
 export default function LogoCarousel() {
   const [isHovered, setIsHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Check if device is mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Initial check
+    checkMobile();
+
+    // Add resize listener
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,8 +59,10 @@ export default function LogoCarousel() {
         </div>
 
         <div className="relative px-4 py-8" 
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
+          onMouseEnter={() => !isMobile && setIsHovered(true)}
+          onMouseLeave={() => !isMobile && setIsHovered(false)}
+          onTouchStart={() => isMobile && setIsHovered(true)}
+          onTouchEnd={() => isMobile && setIsHovered(false)}
         >
           {/* Gradient overlays for smooth fade effect */}
           <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-gray-50 via-white/80 to-transparent z-10"></div>
@@ -53,26 +70,29 @@ export default function LogoCarousel() {
 
           {/* Logo scroll container */}
           <div className="logo-carousel-container overflow-hidden">
-            <div className={`flex logo-carousel-track ${
-              !isHovered ? 'animate-scroll' : 'transform transition-transform duration-300'
+            <div className={`flex ${
+              !isHovered 
+                ? isMobile 
+                  ? 'animate-scroll-mobile' 
+                  : 'animate-scroll-desktop'
+                : 'transform transition-transform duration-300'
             }`}>
               {/* First set of logos */}
               {[...logos, ...logos].map((logo, index) => (
                 <div
                   key={`${logo.id}-${index}`}
-                  className="flex-shrink-0 w-[200px] mx-8 px-6 py-4"
+                  className="flex-shrink-0 w-[150px] md:w-[200px] mx-4 md:mx-8 px-4 md:px-6 py-4"
                 >
                   <div 
-                    className="relative group bg-white rounded-xl shadow-sm hover:shadow-lg p-6 
+                    className="relative group bg-white rounded-xl shadow-sm hover:shadow-lg p-4 md:p-6 
                       transform transition-all duration-300 hover:-translate-y-1"
                   >
                     <img
                       src={logo.src}
                       alt={logo.alt}
-                      className="h-12 w-auto object-contain transition-transform duration-300 
+                      className="h-8 md:h-12 w-auto object-contain transition-transform duration-300 
                         transform group-hover:scale-110"
                     />
-                    {/* Subtle highlight effect on hover */}
                     <div className="absolute inset-0 rounded-xl border-2 border-transparent 
                       group-hover:border-primary-orange/20 transition-all duration-300"></div>
                   </div>
@@ -82,7 +102,6 @@ export default function LogoCarousel() {
           </div>
         </div>
 
-        {/* Call to action */}
         <div className={`mt-12 text-center transition-all duration-500 ${
           isVisible ? 'opacity-100' : 'opacity-0'
         }`}>
@@ -95,24 +114,3 @@ export default function LogoCarousel() {
   );
 }
 
-// Add to globals.css
-/*
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-scroll {
-  animation: scroll 30s linear infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-scroll {
-    animation: none;
-  }
-}
-*/
