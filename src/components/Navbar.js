@@ -11,7 +11,7 @@ export default function Navbar() {
       setIsScrolled(window.scrollY > 50);
 
       // Active section detection
-      const sections = ['services', 'about', 'projects', 'contact'];
+      const sections = ['services', 'about', 'movie-showcase', 'contact']; // Changed 'projects' to 'movie-showcase'
       const current = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -27,7 +27,13 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = ['Services', 'About', 'Projects', 'Contact'];
+  // Update navItems mapping for Projects
+  const navItems = [
+    { name: 'Services', href: '#services' },
+    { name: 'About', href: '#about' },
+    { name: 'Projects', href: '#movie-showcase' }, // Updated href
+    { name: 'Contact', href: '#contact' }
+  ];
 
   return (
     <nav 
@@ -62,17 +68,17 @@ export default function Navbar() {
           <div className="hidden md:flex items-center space-x-1">
             {navItems.map((item) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+                key={item.name}
+                href={item.href}
                 className={`relative px-4 py-2 rounded-full font-medium transition-all duration-300 group ${
                   isScrolled 
                     ? 'text-gray-600 hover:text-primary-orange' 
                     : 'text-white/90 hover:text-white'
-                } ${activeSection === item.toLowerCase() ? 'text-primary-orange' : ''}`}
+                } ${activeSection === item.href.substring(1) ? 'text-primary-orange' : ''}`}
               >
-                {item}
+                {item.name}
                 <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-primary-orange transform -translate-x-1/2 transition-all duration-300 ${
-                  activeSection === item.toLowerCase() ? 'w-1/2' : 'group-hover:w-1/2'
+                  activeSection === item.href.substring(1) ? 'w-1/2' : 'group-hover:w-1/2'
                 }`}></span>
               </a>
             ))}
@@ -123,14 +129,14 @@ export default function Navbar() {
           <div className="mx-4 my-2 bg-white rounded-2xl shadow-xl overflow-hidden ring-1 ring-black/5 backdrop-blur-lg">
             {navItems.map((item) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+                key={item.name}
+                href={item.href}
                 className="group block px-6 py-3 text-gray-600 hover:bg-gray-50 transition-colors duration-300"
                 onClick={() => setIsOpen(false)}
               >
                 <div className="flex items-center">
                   <span className="w-0 h-0.5 bg-primary-orange mr-0 group-hover:w-2 group-hover:mr-2 transition-all duration-300"></span>
-                  {item}
+                  {item.name}
                 </div>
               </a>
             ))}
