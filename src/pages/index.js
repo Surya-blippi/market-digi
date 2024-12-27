@@ -8,6 +8,7 @@ import Testimonials from '@/components/Testimonials'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 import LogoCarousel from '@/components/LogoCarousel'
+import MovieShowcase from '@/components/MovieShowcase'
 
 
 export default function Home() {
@@ -23,6 +24,7 @@ export default function Home() {
         <Navbar />
         <Hero />
         <LogoCarousel />
+        <MovieShowcase />
         <Services />
         <About />
         <Testimonials />
