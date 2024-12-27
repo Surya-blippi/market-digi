@@ -150,11 +150,11 @@ html {
 }
 
 .animate-scroll-desktop {
-  animation: scroll 30s linear infinite;
+  animation: scroll 10s linear infinite;
 }
 
 .animate-scroll-mobile {
-  animation: scroll 15s linear infinite; /* Faster animation for mobile */
+  animation: scroll 10s linear infinite; /* Faster animation for mobile */
 }
 
 /* Pause animation when device supports hover */
