@@ -223,24 +223,24 @@ export default function Services() {
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mt-3 mb-6 text-white">
             What We <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-orange to-primary-yellow">Offer</span>
           </h2>
-          <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto font-light">
+          <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
             Comprehensive digital solutions tailored to elevate your business
           </p>
         </div>
 
         {/* Service Navigation */}
-        <div className="flex flex-nowrap overflow-x-auto sm:flex-wrap justify-start sm:justify-center mb-16 gap-4 pb-4 sm:pb-0 scrollbar-hide">
+        <div className="flex flex-nowrap overflow-x-auto sm:flex-wrap justify-start sm:justify-center mb-16 gap-4 pb-4 sm:pb-0 hide-scrollbar">
           {services.map((service, index) => (
             <button
               key={index}
               onClick={() => setActiveService(index)}
-              className={`flex-none sm:flex-initial px-6 sm:px-8 py-3 transition-all duration-300 rounded-lg ${
+              className={`flex-none sm:flex-initial px-6 sm:px-8 py-3 transition-all duration-300 rounded-lg whitespace-nowrap ${
                 activeService === index
                   ? 'bg-primary-orange/10 text-primary-orange'
-                  : 'text-gray-400 hover:text-white hover:bg-white/5'
+                  : 'text-gray-300 hover:text-white hover:bg-white/5'
               }`}
             >
-              <span className="relative z-10 text-base sm:text-lg font-medium whitespace-nowrap">{service.title}</span>
+              <span className="text-base sm:text-lg font-medium">{service.title}</span>
             </button>
           ))}
         </div>
@@ -265,7 +265,7 @@ export default function Services() {
                     </div>
                     <div>
                       <h3 className="text-2xl sm:text-3xl font-bold text-white">{service.title}</h3>
-                      <p className="text-lg sm:text-xl mt-2 text-white/80">{service.subtitle}</p>
+                      <p className="text-lg sm:text-xl mt-2 text-gray-300">{service.subtitle}</p>
                     </div>
                   </div>
                 </div>
@@ -278,7 +278,7 @@ export default function Services() {
 
                   {service.features && (
                     <div className="space-y-8">
-                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         {service.features.map((feature, featureIndex) => (
                           <div
                             key={featureIndex}
@@ -295,7 +295,7 @@ export default function Services() {
                               onClick={() => toggleFeature(serviceIndex, featureIndex)}
                             >
                               <div className="flex items-start space-x-4">
-                                <span className="text-xl sm:text-2xl transform transition-transform duration-300 group-hover:scale-125">
+                                <span className="text-2xl transform transition-transform duration-300 group-hover:scale-125">
                                   {feature.icon}
                                 </span>
                                 <div className="flex-1">
@@ -317,7 +317,7 @@ export default function Services() {
                                       ? 'max-h-96 opacity-100'
                                       : 'max-h-0 opacity-0'
                                   }`}>
-                                    <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
+                                    <p className="text-gray-300 leading-relaxed">
                                       {feature.description}
                                     </p>
                                   </div>
@@ -330,7 +330,7 @@ export default function Services() {
 
                       {service.conclusion && (
                         <div className="bg-white/5 backdrop-blur-sm p-6 sm:p-8 rounded-xl">
-                          <p className="text-sm sm:text-base text-gray-300 leading-relaxed italic">
+                          <p className="text-gray-300 leading-relaxed italic">
                             "{service.conclusion}"
                           </p>
                         </div>
@@ -343,6 +343,17 @@ export default function Services() {
           ))}
         </div>
       </div>
+
+      {/* Add custom styles for hiding scrollbar */}
+      <style jsx global>{`
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </section>
   );
 }
