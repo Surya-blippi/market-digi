@@ -44,7 +44,7 @@ export default function LogoCarousel() {
         <div className={`text-center mb-12 transition-all duration-700 transform ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
-          <span className="text-primary-orange font-medium text-sm uppercase tracking-wider">Our Partners</span>
+          <span className="text-primary-orange font-medium text-sm uppercase tracking-wider">Our Clients</span>
           <h2 className="text-3xl font-bold text-gray-900 mt-2">
             Trusted by Industry Leaders
           </h2>
@@ -79,7 +79,7 @@ export default function LogoCarousel() {
           isVisible ? 'opacity-100' : 'opacity-0'
         }`}>
           <p className="text-gray-600 text-sm">
-            Join our network of <span className="font-semibold text-primary-orange">500+</span> satisfied clients
+            Join our network of <span className="font-semibold text-primary-orange">50+</span> satisfied clients
           </p>
         </div>
       </div>
