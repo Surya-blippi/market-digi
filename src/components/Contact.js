@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react';
 
 export default function Contact() {
   const [isVisible, setIsVisible] = useState(false);
-  const [activeSection, setActiveSection] = useState('about'); // 'about' or 'form'
+  const [activeSection, setActiveSection] = useState('about');
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     email: '',
-    socialLinks: '',
-    industryFocus: '',
-    description: ''
+    companyName: '',
+    industryType: '',
+    message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
@@ -41,9 +41,9 @@ export default function Contact() {
         name: '',
         phone: '',
         email: '',
-        socialLinks: '',
-        industryFocus: '',
-        description: ''
+        companyName: '',
+        industryType: '',
+        message: ''
       });
     } catch (error) {
       setSubmitStatus('error');
@@ -73,19 +73,19 @@ export default function Contact() {
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
           <span className="text-primary-orange font-semibold text-lg uppercase tracking-widest">
-            Influence & Impact
+            Markbiz LeadUp
           </span>
           <h2 className="text-5xl sm:text-6xl font-bold mt-3 mb-6 text-white">
-            PR & Influencer <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-orange to-primary-yellow">Management</span>
+            Generate & Convert <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-orange to-primary-yellow">Quality Leads</span>
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto font-light">
-            Join our exclusive network of influencers and shape the future of digital marketing
+            Transform your business growth with our data-driven lead generation strategies
           </p>
         </div>
 
         {/* Navigation Tabs */}
         <div className="flex justify-center mb-16 space-x-8">
-          {['About', 'Apply Now'].map((tab, index) => (
+          {['Plans', 'Get Started'].map((tab, index) => (
             <button
               key={tab}
               onClick={() => setActiveSection(index === 0 ? 'about' : 'form')}
@@ -106,46 +106,127 @@ export default function Contact() {
         </div>
 
         <div className="max-w-6xl mx-auto">
-          {/* About Section */}
+          {/* Subscription Plans */}
           <div className={`transition-all duration-500 transform ${
             activeSection === 'about'
               ? 'opacity-100 translate-y-0'
               : 'opacity-0 translate-y-10 hidden'
           }`}>
-            <div className="grid md:grid-cols-2 gap-16">
-              <div className="space-y-8">
-                <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:-translate-y-1 transition-all duration-300">
-                  <h3 className="text-2xl font-semibold text-white mb-4">Public Relations Excellence</h3>
-                  <p className="text-gray-400 leading-relaxed">
-                    PR is the practice of building and maintaining relationships between a company and its various stakeholders, such as customers, media, and the general public. This includes activities like press releases, media relations, and crisis management.
-                  </p>
+            <div className="grid md:grid-cols-3 gap-8">
+              {/* Basic Plan */}
+              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:-translate-y-2 transition-all duration-300">
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-semibold text-white mb-4">Basic</h3>
+                  <div className="text-primary-orange text-4xl font-bold mb-2">$499<span className="text-lg text-gray-400">/mo</span></div>
+                  <p className="text-gray-400">Perfect for Small Businesses</p>
                 </div>
-                <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:-translate-y-1 transition-all duration-300">
-                  <h3 className="text-2xl font-semibold text-white mb-4">Strategic Influence</h3>
-                  <p className="text-gray-400 leading-relaxed">
-                    Both PR and influencer management are important aspects of a comprehensive marketing strategy and can be used to increase brand awareness, drive sales, and establish a positive reputation.
-                  </p>
+                <ul className="space-y-4 mb-8">
+                  <li className="flex items-center text-gray-300">
+                    <span className="text-primary-orange mr-2">✓</span>
+                    Up to 50 Qualified Leads/month
+                  </li>
+                  <li className="flex items-center text-gray-300">
+                    <span className="text-primary-orange mr-2">✓</span>
+                    Basic Lead Scoring
+                  </li>
+                  <li className="flex items-center text-gray-300">
+                    <span className="text-primary-orange mr-2">✓</span>
+                    Email Marketing Integration
+                  </li>
+                  <li className="flex items-center text-gray-300">
+                    <span className="text-primary-orange mr-2">✓</span>
+                    Monthly Performance Report
+                  </li>
+                </ul>
+                <div className="text-center">
+                  <button onClick={() => setActiveSection('form')} className="px-6 py-3 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-all duration-300">
+                    Choose Plan
+                  </button>
                 </div>
               </div>
-              
-              <div className="space-y-8 md:mt-16">
-                <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:-translate-y-1 transition-all duration-300">
-                  <h3 className="text-2xl font-semibold text-white mb-4">Influencer Management</h3>
-                  <p className="text-gray-400 leading-relaxed">
-                    Influencer management is the process of identifying, engaging and working with individuals who have a large following and influence on social media platforms. These individuals can help promote brands through sponsored content, product reviews, or other forms of collaboration.
-                  </p>
+
+              {/* Elite Plan */}
+              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:-translate-y-2 transition-all duration-300 relative">
+                <div className="absolute top-4 right-4">
+                  <span className="bg-primary-orange/20 text-primary-orange text-sm py-1 px-3 rounded-full">Popular</span>
                 </div>
-                <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:-translate-y-1 transition-all duration-300">
-                  <h3 className="text-2xl font-semibold text-white mb-4">Measurable Impact</h3>
-                  <p className="text-gray-400 leading-relaxed">
-                    Monitoring and measuring the impact of PR and influencer campaigns is key to refining the strategy and maximizing the return on investment.
-                  </p>
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-semibold text-white mb-4">Elite</h3>
+                  <div className="text-primary-orange text-4xl font-bold mb-2">$999<span className="text-lg text-gray-400">/mo</span></div>
+                  <p className="text-gray-400">For Growing Companies</p>
+                </div>
+                <ul className="space-y-4 mb-8">
+                  <li className="flex items-center text-gray-300">
+                    <span className="text-primary-orange mr-2">✓</span>
+                    Up to 150 Qualified Leads/month
+                  </li>
+                  <li className="flex items-center text-gray-300">
+                    <span className="text-primary-orange mr-2">✓</span>
+                    Advanced Lead Scoring
+                  </li>
+                  <li className="flex items-center text-gray-300">
+                    <span className="text-primary-orange mr-2">✓</span>
+                    CRM Integration
+                  </li>
+                  <li className="flex items-center text-gray-300">
+                    <span className="text-primary-orange mr-2">✓</span>
+                    Weekly Performance Reports
+                  </li>
+                  <li className="flex items-center text-gray-300">
+                    <span className="text-primary-orange mr-2">✓</span>
+                    Lead Nurturing Campaigns
+                  </li>
+                </ul>
+                <div className="text-center">
+                  <button onClick={() => setActiveSection('form')} className="px-6 py-3 bg-primary-orange text-white rounded-lg hover:bg-primary-orange/90 transition-all duration-300">
+                    Choose Plan
+                  </button>
+                </div>
+              </div>
+
+              {/* Gold Plan */}
+              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:-translate-y-2 transition-all duration-300">
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-semibold text-white mb-4">Gold</h3>
+                  <div className="text-primary-orange text-4xl font-bold mb-2">$1999<span className="text-lg text-gray-400">/mo</span></div>
+                  <p className="text-gray-400">Enterprise Solutions</p>
+                </div>
+                <ul className="space-y-4 mb-8">
+                  <li className="flex items-center text-gray-300">
+                    <span className="text-primary-orange mr-2">✓</span>
+                    Unlimited Qualified Leads
+                  </li>
+                  <li className="flex items-center text-gray-300">
+                    <span className="text-primary-orange mr-2">✓</span>
+                    AI-Powered Lead Scoring
+                  </li>
+                  <li className="flex items-center text-gray-300">
+                    <span className="text-primary-orange mr-2">✓</span>
+                    Full Stack Integration
+                  </li>
+                  <li className="flex items-center text-gray-300">
+                    <span className="text-primary-orange mr-2">✓</span>
+                    Real-time Analytics Dashboard
+                  </li>
+                  <li className="flex items-center text-gray-300">
+                    <span className="text-primary-orange mr-2">✓</span>
+                    Dedicated Account Manager
+                  </li>
+                  <li className="flex items-center text-gray-300">
+                    <span className="text-primary-orange mr-2">✓</span>
+                    Custom Solutions
+                  </li>
+                </ul>
+                <div className="text-center">
+                  <button onClick={() => setActiveSection('form')} className="px-6 py-3 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-all duration-300">
+                    Choose Plan
+                  </button>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Application Form */}
+          {/* Contact Form */}
           <div className={`transition-all duration-500 transform ${
             activeSection === 'form'
               ? 'opacity-100 translate-y-0'
@@ -203,50 +284,50 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label htmlFor="industryFocus" className="block text-sm font-medium text-gray-300 mb-2">
-                      Industry Focus
+                    <label htmlFor="companyName" className="block text-sm font-medium text-gray-300 mb-2">
+                      Company Name
                     </label>
                     <input
                       type="text"
-                      name="industryFocus"
-                      id="industryFocus"
-                      value={formData.industryFocus}
+                      name="companyName"
+                      id="companyName"
+                      value={formData.companyName}
                       onChange={handleChange}
                       className="w-full bg-white/10 border-0 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:ring-2 focus:ring-primary-orange transition-all duration-300"
-                      placeholder="Your primary industry focus"
+                      placeholder="Your company name"
                       required
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="socialLinks" className="block text-sm font-medium text-gray-300 mb-2">
-                    Social Media Platforms
+                  <label htmlFor="industryType" className="block text-sm font-medium text-gray-300 mb-2">
+                    Industry Type
                   </label>
-                  <textarea
-                    name="socialLinks"
-                    id="socialLinks"
-                    rows={3}
-                    value={formData.socialLinks}
+                  <input
+                    type="text"
+                    name="industryType"
+                    id="industryType"
+                    value={formData.industryType}
                     onChange={handleChange}
                     className="w-full bg-white/10 border-0 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:ring-2 focus:ring-primary-orange transition-all duration-300"
-                    placeholder="Add your social media links (one per line)"
+                    placeholder="Your industry type"
                     required
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="description" className="block text-sm font-medium text-gray-300 mb-2">
-                    Tell Us About Yourself
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                    Message
                   </label>
                   <textarea
-                    name="description"
-                    id="description"
+                    name="message"
+                    id="message"
                     rows={4}
-                    value={formData.description}
+                    value={formData.message}
                     onChange={handleChange}
                     className="w-full bg-white/10 border-0 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:ring-2 focus:ring-primary-orange transition-all duration-300"
-                    placeholder="Share your experience and what makes you unique"
+                    placeholder="Tell us about your requirements and goals"
                     required
                   />
                 </div>
@@ -263,11 +344,11 @@ export default function Contact() {
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                         </svg>
-                        <span>Submitting...</span>
+                        <span>Processing...</span>
                       </>
                     ) : (
                       <>
-                        <span className="mr-2">Join Our Network</span>
+                        <span className="mr-2">Start Growing</span>
                         <svg
                           className="w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-1"
                           fill="none"
@@ -289,8 +370,8 @@ export default function Contact() {
                     : 'bg-red-500/10 text-red-400'
                 }`}>
                   {submitStatus === 'success'
-                     ? "Your application has been submitted successfully! We'll be in touch soon."
-                    : 'There was an error submitting your application. Please try again.'}
+                    ? "Thank you! We'll contact you shortly to discuss your requirements."
+                    : 'There was an error submitting your request. Please try again.'}
                 </div>
               )}
             </div>
@@ -300,3 +381,5 @@ export default function Contact() {
     </section>
   );
 }
+
+                    

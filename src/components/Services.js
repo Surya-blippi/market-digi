@@ -117,16 +117,93 @@ export default function Services() {
       ],
       conclusion: "Branding services are an essential part of any business's growth and success, creating a strong and recognizable brand can help differentiate a business from its competitors and build trust and loyalty with the customers. We will work closely with you to understand your vision, goals, target audience and competitors to create a unique and effective brand that stands out in the market."
     },
+    // Replace the third service in the services array with this:
+{
+  title: "PR & Influencer Management",
+  subtitle: "Build Your Brand's Presence & Reputation",
+  description: "Public relations (PR) and influencer management are closely related practices that involve managing the public image and reputation of a brand or organization. PR is the practice of building and maintaining relationships between a company and its various stakeholders, such as customers, media, and the general public. This includes activities like press releases, media relations, and crisis management.",
+  icon: (
+    <svg className="w-16 h-16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+    </svg>
+  ),
+  features: [
     {
-      title: "Lead Generation",
-      subtitle: "Grow Your Business",
-      description: "Comprehensive lead generation strategies to help you attract and convert potential customers. More details coming soon.",
-      icon: (
-        <svg className="w-16 h-16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-        </svg>
-      )
+      title: "Media Relations",
+      description: "Building and maintaining relationships with media outlets, creating press releases, and managing media communications to enhance brand visibility.",
+      icon: "📰"
+    },
+    {
+      title: "Crisis Management",
+      description: "Developing and implementing strategies to handle and mitigate potential reputation risks and crisis situations effectively.",
+      icon: "🛡️"
+    },
+    {
+      title: "Influencer Outreach",
+      description: "Identifying and partnering with relevant influencers who align with your brand values and can authentically connect with your target audience.",
+      icon: "🤝"
+    },
+    {
+      title: "Campaign Management",
+      description: "Planning, executing, and monitoring influencer marketing campaigns to ensure maximum impact and ROI.",
+      icon: "📈"
+    },
+    {
+      title: "Content Strategy",
+      description: "Developing content strategies that align with both PR objectives and influencer partnerships for consistent brand messaging.",
+      icon: "📝"
+    },
+    {
+      title: "Performance Analytics",
+      description: "Monitoring and measuring the impact of PR and influencer campaigns to refine strategies and maximize return on investment.",
+      icon: "📊"
     }
+  ],
+  conclusion: "Both PR and influencer management are important aspects of a comprehensive marketing strategy and can be used to increase brand awareness, drive sales, and establish a positive reputation. Successful PR and influencer management requires a deep understanding of the target audience, as well as the ability to identify and collaborate with the right influencers and media outlets to reach them."
+},
+{
+  title: "Digital Marketing & Social Media",
+  subtitle: "Amplify Your Online Presence",
+  description: "Digital marketing and social media management are essential components for business growth in today's digital age. Our comprehensive digital marketing strategies combine data-driven insights with creative expertise to enhance your brand's online visibility, engage your target audience, and drive measurable results across all digital channels.",
+  icon: (
+    <svg className="w-16 h-16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+    </svg>
+  ),
+  features: [
+    {
+      title: "Social Media Strategy",
+      description: "Creating comprehensive social media strategies tailored to your brand voice, target audience, and business objectives across multiple platforms.",
+      icon: "📱"
+    },
+    {
+      title: "Content Creation & Management",
+      description: "Developing engaging, platform-specific content including graphics, videos, and copy that resonates with your audience and drives engagement.",
+      icon: "✍️"
+    },
+    {
+      title: "Paid Advertising",
+      description: "Managing targeted advertising campaigns across Google Ads, Facebook, Instagram, LinkedIn, and other platforms to maximize ROI.",
+      icon: "💰"
+    },
+    {
+      title: "Analytics & Reporting",
+      description: "Providing detailed insights and regular reports on campaign performance, audience engagement, and ROI metrics.",
+      icon: "📊"
+    },
+    {
+      title: "Community Management",
+      description: "Active engagement with your social media community, including responding to comments, messages, and building meaningful relationships with followers.",
+      icon: "💬"
+    },
+    {
+      title: "SEO & Content Marketing",
+      description: "Implementing search engine optimization strategies and creating valuable content to improve organic visibility and drive targeted traffic.",
+      icon: "🎯"
+    }
+  ],
+  conclusion: "Effective digital marketing and social media management are crucial for establishing a strong online presence and connecting with your target audience. Our team combines strategic thinking with creative execution to deliver measurable results that help your business grow in the digital landscape."
+}
   ];
 
   return (
