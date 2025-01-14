@@ -1,12 +1,15 @@
-// src/components/Contact.js
 import { useState, useEffect } from 'react';
 
 export default function Contact() {
   const [isVisible, setIsVisible] = useState(false);
+  const [activeSection, setActiveSection] = useState('about'); // 'about' or 'form'
   const [formData, setFormData] = useState({
     name: '',
+    phone: '',
     email: '',
-    message: ''
+    socialLinks: '',
+    industryFocus: '',
+    description: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
@@ -32,11 +35,16 @@ export default function Contact() {
     setIsSubmitting(true);
     
     try {
-      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1500));
-      console.log('Form submitted:', formData);
       setSubmitStatus('success');
-      setFormData({ name: '', email: '', message: '' });
+      setFormData({
+        name: '',
+        phone: '',
+        email: '',
+        socialLinks: '',
+        industryFocus: '',
+        description: ''
+      });
     } catch (error) {
       setSubmitStatus('error');
     } finally {
@@ -52,67 +60,103 @@ export default function Contact() {
     });
   };
 
-  const contactInfo = [
-    {
-      title: "Phone",
-      content: "+1 (555) 123-4567",
-      icon: (
-        <svg className="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-        </svg>
-      )
-    },
-    {
-      title: "Email",
-      content: "contact@markbiz.com",
-      icon: (
-        <svg className="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-      )
-    },
-    {
-      title: "Location",
-      content: "123 Business St, Suite 100\nSan Francisco, CA 94107",
-      icon: (
-        <svg className="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-        </svg>
-      )
-    }
-  ];
-
   return (
-    <section id="contact" className="py-20 relative overflow-hidden bg-gradient-to-b from-white to-gray-50">
-      {/* Background Elements */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-primary-orange/5 rounded-full -translate-x-32 -translate-y-32"></div>
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-primary-yellow/5 rounded-full translate-x-32 translate-y-32"></div>
-
+    <section id="contact" className="py-32 relative overflow-hidden">
+      {/* Premium Background Elements */}
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-gray-900 to-black"></div>
+      <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_center,rgba(255,165,0,0.1)_0%,transparent_70%)]"></div>
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary-orange to-transparent"></div>
+      
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`text-center mb-16 transition-all duration-700 transform ${
+        {/* Section Header */}
+        <div className={`text-center mb-20 transition-all duration-700 transform ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
-          <span className="text-primary-orange font-semibold text-lg uppercase tracking-wider">Contact Us</span>
-          <h2 className="text-4xl sm:text-5xl font-bold mt-2 mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary-orange to-primary-yellow">
-            Let's Talk About Your Project
+          <span className="text-primary-orange font-semibold text-lg uppercase tracking-widest">
+            Influence & Impact
+          </span>
+          <h2 className="text-5xl sm:text-6xl font-bold mt-3 mb-6 text-white">
+            PR & Influencer <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-orange to-primary-yellow">Management</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Ready to take your digital presence to the next level?
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto font-light">
+            Join our exclusive network of influencers and shape the future of digital marketing
           </p>
         </div>
 
+        {/* Navigation Tabs */}
+        <div className="flex justify-center mb-16 space-x-8">
+          {['About', 'Apply Now'].map((tab, index) => (
+            <button
+              key={tab}
+              onClick={() => setActiveSection(index === 0 ? 'about' : 'form')}
+              className={`group relative px-8 py-3 transition-all duration-300 ${
+                (index === 0 ? 'about' : 'form') === activeSection
+                  ? 'text-primary-orange'
+                  : 'text-gray-400 hover:text-white'
+              }`}
+            >
+              <span className="relative z-10 text-lg font-medium">{tab}</span>
+              <div className={`absolute inset-0 rounded-lg bg-white/5 transform transition-all duration-300 ${
+                (index === 0 ? 'about' : 'form') === activeSection
+                  ? 'opacity-100 scale-100'
+                  : 'opacity-0 scale-95'
+              }`}></div>
+            </button>
+          ))}
+        </div>
+
         <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <div className={`transition-all duration-1000 transform ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
-            }`}>
-              <div className="bg-white rounded-2xl shadow-xl p-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
+          {/* About Section */}
+          <div className={`transition-all duration-500 transform ${
+            activeSection === 'about'
+              ? 'opacity-100 translate-y-0'
+              : 'opacity-0 translate-y-10 hidden'
+          }`}>
+            <div className="grid md:grid-cols-2 gap-16">
+              <div className="space-y-8">
+                <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:-translate-y-1 transition-all duration-300">
+                  <h3 className="text-2xl font-semibold text-white mb-4">Public Relations Excellence</h3>
+                  <p className="text-gray-400 leading-relaxed">
+                    PR is the practice of building and maintaining relationships between a company and its various stakeholders, such as customers, media, and the general public. This includes activities like press releases, media relations, and crisis management.
+                  </p>
+                </div>
+                <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:-translate-y-1 transition-all duration-300">
+                  <h3 className="text-2xl font-semibold text-white mb-4">Strategic Influence</h3>
+                  <p className="text-gray-400 leading-relaxed">
+                    Both PR and influencer management are important aspects of a comprehensive marketing strategy and can be used to increase brand awareness, drive sales, and establish a positive reputation.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="space-y-8 md:mt-16">
+                <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:-translate-y-1 transition-all duration-300">
+                  <h3 className="text-2xl font-semibold text-white mb-4">Influencer Management</h3>
+                  <p className="text-gray-400 leading-relaxed">
+                    Influencer management is the process of identifying, engaging and working with individuals who have a large following and influence on social media platforms. These individuals can help promote brands through sponsored content, product reviews, or other forms of collaboration.
+                  </p>
+                </div>
+                <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:-translate-y-1 transition-all duration-300">
+                  <h3 className="text-2xl font-semibold text-white mb-4">Measurable Impact</h3>
+                  <p className="text-gray-400 leading-relaxed">
+                    Monitoring and measuring the impact of PR and influencer campaigns is key to refining the strategy and maximizing the return on investment.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Application Form */}
+          <div className={`transition-all duration-500 transform ${
+            activeSection === 'form'
+              ? 'opacity-100 translate-y-0'
+              : 'opacity-0 translate-y-10 hidden'
+          }`}>
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 md:p-12">
+              <form onSubmit={handleSubmit} className="space-y-8">
+                <div className="grid md:grid-cols-2 gap-8">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                      Name
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                      Full Name
                     </label>
                     <input
                       type="text"
@@ -120,14 +164,31 @@ export default function Contact() {
                       id="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-2 focus:ring-primary-orange focus:border-transparent transition-all duration-300"
+                      className="w-full bg-white/10 border-0 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:ring-2 focus:ring-primary-orange transition-all duration-300"
+                      placeholder="Enter your name"
                       required
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                      Email
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-2">
+                      Contact Number
+                    </label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      id="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="w-full bg-white/10 border-0 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:ring-2 focus:ring-primary-orange transition-all duration-300"
+                      placeholder="Enter your phone number"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                      Email Address
                     </label>
                     <input
                       type="email"
@@ -135,101 +196,103 @@ export default function Contact() {
                       id="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-2 focus:ring-primary-orange focus:border-transparent transition-all duration-300"
+                      className="w-full bg-white/10 border-0 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:ring-2 focus:ring-primary-orange transition-all duration-300"
+                      placeholder="Enter your email"
                       required
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700">
-                      Message
+                    <label htmlFor="industryFocus" className="block text-sm font-medium text-gray-300 mb-2">
+                      Industry Focus
                     </label>
-                    <textarea
-                      name="message"
-                      id="message"
-                      rows={4}
-                      value={formData.message}
+                    <input
+                      type="text"
+                      name="industryFocus"
+                      id="industryFocus"
+                      value={formData.industryFocus}
                       onChange={handleChange}
-                      className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-2 focus:ring-primary-orange focus:border-transparent transition-all duration-300"
+                      className="w-full bg-white/10 border-0 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:ring-2 focus:ring-primary-orange transition-all duration-300"
+                      placeholder="Your primary industry focus"
                       required
                     />
                   </div>
+                </div>
 
-                  <div className="text-center">
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className={`inline-flex items-center justify-center py-3 px-8 border border-transparent text-base font-medium rounded-full text-white bg-gradient-to-r from-primary-orange to-primary-yellow hover:from-primary-yellow hover:to-primary-orange transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-orange ${
-                        isSubmitting ? 'opacity-75 cursor-not-allowed' : ''
-                      }`}
-                    >
-                      {isSubmitting ? (
+                <div>
+                  <label htmlFor="socialLinks" className="block text-sm font-medium text-gray-300 mb-2">
+                    Social Media Platforms
+                  </label>
+                  <textarea
+                    name="socialLinks"
+                    id="socialLinks"
+                    rows={3}
+                    value={formData.socialLinks}
+                    onChange={handleChange}
+                    className="w-full bg-white/10 border-0 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:ring-2 focus:ring-primary-orange transition-all duration-300"
+                    placeholder="Add your social media links (one per line)"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="description" className="block text-sm font-medium text-gray-300 mb-2">
+                    Tell Us About Yourself
+                  </label>
+                  <textarea
+                    name="description"
+                    id="description"
+                    rows={4}
+                    value={formData.description}
+                    onChange={handleChange}
+                    className="w-full bg-white/10 border-0 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:ring-2 focus:ring-primary-orange transition-all duration-300"
+                    placeholder="Share your experience and what makes you unique"
+                    required
+                  />
+                </div>
+
+                <div className="text-center">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="inline-flex items-center justify-center px-8 py-4 border-2 border-primary-orange rounded-lg text-primary-orange hover:bg-primary-orange hover:text-white transition-all duration-300 transform hover:scale-105 group disabled:opacity-70 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? (
+                      <>
                         <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                         </svg>
-                      ) : null}
-                      {isSubmitting ? 'Sending...' : 'Send Message'}
-                    </button>
-                  </div>
-                </form>
-
-                {/* Status Messages */}
-                {submitStatus && (
-                  <div className={`mt-4 p-4 rounded-lg text-center ${
-                    submitStatus === 'success' 
-                      ? 'bg-green-50 text-green-800' 
-                      : 'bg-red-50 text-red-800'
-                  }`}>
-                    {submitStatus === 'success' 
-                      ? 'Message sent successfully!' 
-                      : 'Failed to send message. Please try again.'}
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Contact Information */}
-            <div className={`transition-all duration-1000 transform ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
-            }`}>
-              <div className="grid gap-8">
-                {contactInfo.map((info, index) => (
-                  <div
-                    key={info.title}
-                    className="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-1 transition-all duration-300"
-                    style={{ transitionDelay: `${index * 200}ms` }}
-                  >
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0">
-                        <div className="bg-gradient-to-r from-primary-orange to-primary-yellow p-3 rounded-lg text-white">
-                          {info.icon}
-                        </div>
-                      </div>
-                      <div className="ml-4">
-                        <h3 className="text-xl font-semibold text-gray-900">{info.title}</h3>
-                        <p className="mt-1 text-gray-600 whitespace-pre-line">{info.content}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-
-                {/* Social Media Links */}
-                <div className="flex justify-center space-x-6 mt-6">
-                  {['facebook', 'twitter', 'linkedin', 'instagram'].map((social) => (
-                    <a
-                      key={social}
-                      href={`#${social}`}
-                      className="text-gray-400 hover:text-primary-orange transform hover:scale-110 transition-all duration-300"
-                    >
-                      <span className="sr-only">{social}</span>
-                      <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                        {/* Add social media SVG paths here */}
-                      </svg>
-                    </a>
-                  ))}
+                        <span>Submitting...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span className="mr-2">Join Our Network</span>
+                        <svg
+                          className="w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-1"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </>
+                    )}
+                  </button>
                 </div>
-              </div>
+              </form>
+
+              {submitStatus && (
+                <div className={`mt-6 p-4 rounded-lg text-center backdrop-blur-sm ${
+                  submitStatus === 'success'
+                    ? 'bg-green-500/10 text-green-400'
+                    : 'bg-red-500/10 text-red-400'
+                }`}>
+                  {submitStatus === 'success'
+                     ? "Your application has been submitted successfully! We'll be in touch soon."
+                    : 'There was an error submitting your application. Please try again.'}
+                </div>
+              )}
             </div>
           </div>
         </div>
