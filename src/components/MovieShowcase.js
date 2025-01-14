@@ -2,8 +2,21 @@ import { useState, useEffect, useRef } from 'react';
 
 export default function ReelShowcase() {
   const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [autoplayEnabled, setAutoplayEnabled] = useState(true);
 
   useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    setAutoplayEnabled(!prefersReducedMotion);
+
     const handleScroll = () => {
       const element = document.getElementById('reel-showcase');
       if (element) {
@@ -16,7 +29,11 @@ export default function ReelShowcase() {
 
     window.addEventListener('scroll', handleScroll);
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const reels = [
@@ -31,49 +48,87 @@ export default function ReelShowcase() {
     { video: "/videos/reels/reel-9.mp4" }
   ];
 
-  // Split reels into two rows
   const reelsRow1 = reels.slice(0, 5);
   const reelsRow2 = reels.slice(5);
 
   const ReelCard = ({ reel }) => {
     const videoRef = useRef(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [showPlayButton, setShowPlayButton] = useState(true);
 
-    const handleMouseEnter = () => {
-      if (videoRef.current) {
-        videoRef.current.play();
-      }
+    const handleVideoLoad = () => {
+      setIsLoaded(true);
     };
 
-    const handleMouseLeave = () => {
-      if (videoRef.current) {
+    const handleInteraction = (e) => {
+      e.preventDefault();
+      if (!videoRef.current) return;
+
+      if (!isPlaying) {
+        const playPromise = videoRef.current.play();
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              setIsPlaying(true);
+              setShowPlayButton(false);
+            })
+            .catch(error => {
+              console.log('Playback failed:', error);
+              setShowPlayButton(true);
+            });
+        }
+      } else {
         videoRef.current.pause();
         videoRef.current.currentTime = 0;
+        setIsPlaying(false);
+        setShowPlayButton(true);
       }
     };
 
     return (
       <div 
-        className="flex-shrink-0 mx-4 group"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        className="flex-shrink-0 mx-2 sm:mx-4 group"
+        onClick={isMobile ? handleInteraction : undefined}
+        onTouchStart={isMobile ? handleInteraction : undefined}
+        onMouseEnter={!isMobile ? handleInteraction : undefined}
+        onMouseLeave={!isMobile ? handleInteraction : undefined}
       >
-        <div className="relative w-48 aspect-[9/16] overflow-hidden rounded-lg transform transition-all duration-500 hover:scale-105">
+        <div className="relative w-28 sm:w-32 md:w-48 aspect-[9/16] overflow-hidden rounded-lg transform transition-all duration-300 hover:scale-105">
+          {/* Loading Skeleton */}
+          {!isLoaded && (
+            <div className="absolute inset-0 bg-gray-800 animate-pulse"></div>
+          )}
+          
           {/* Video */}
           <video
             ref={videoRef}
-            className="w-full h-full object-cover"
+            className={`w-full h-full object-cover ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
             loop
             muted
             playsInline
-            preload="metadata"
+            preload={isMobile ? "metadata" : "auto"}
+            onLoadedData={handleVideoLoad}
+            poster={`${reel.video.split('.')[0]}.jpg`}
           >
             <source src={reel.video} type="video/mp4" />
           </video>
           
-          {/* Hover Effect - Simple Glow */}
-          <div className="absolute inset-0 ring-2 ring-primary-orange/0 group-hover:ring-primary-orange/50 transition-all duration-300 rounded-lg"></div>
+          {/* Mobile Play Button */}
+          {isMobile && showPlayButton && (
+            <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+              <div className="w-12 h-12 flex items-center justify-center rounded-full bg-primary-orange/80">
+                <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+          )}
           
-          {/* Subtle Overlay for Depth */}
+          {/* Hover Effect */}
+          <div className="absolute inset-0 ring-1 ring-primary-orange/0 group-hover:ring-primary-orange/50 transition-all duration-300 rounded-lg"></div>
+          
+          {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
         </div>
       </div>
@@ -81,9 +136,9 @@ export default function ReelShowcase() {
   };
 
   return (
-    <section id="reel-showcase" className="py-20 bg-gradient-to-b from-gray-900 to-black overflow-hidden">
+    <section id="reel-showcase" className="py-12 sm:py-20 bg-gradient-to-b from-gray-900 to-black overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`text-center mb-12 transition-all duration-700 transform ${
+        <div className={`text-center mb-8 sm:mb-12 transition-all duration-700 transform ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
           <span className="text-primary-orange font-medium text-sm uppercase tracking-wider">Featured Work</span>
@@ -93,13 +148,13 @@ export default function ReelShowcase() {
           <div className="w-20 h-1 bg-gradient-to-r from-primary-orange to-primary-yellow mx-auto mt-4"></div>
         </div>
 
-        {/* First Row - Left to Right */}
-        <div className="relative mb-16">
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-900 to-transparent z-10"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-900 to-transparent z-10"></div>
+        {/* First Row */}
+        <div className="relative mb-6 sm:mb-8">
+          <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-16 md:w-32 bg-gradient-to-r from-gray-900 to-transparent z-10"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-16 md:w-32 bg-gradient-to-l from-gray-900 to-transparent z-10"></div>
           
           <div className="overflow-hidden py-4">
-            <div className="animate-scroll-right flex">
+            <div className={`flex ${autoplayEnabled ? 'animate-scroll-right' : ''}`}>
               {[...reelsRow1, ...reelsRow1].map((reel, index) => (
                 <ReelCard key={index} reel={reel} />
               ))}
@@ -107,13 +162,13 @@ export default function ReelShowcase() {
           </div>
         </div>
 
-        {/* Second Row - Right to Left */}
+        {/* Second Row */}
         <div className="relative">
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-900 to-transparent z-10"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-900 to-transparent z-10"></div>
+          <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-16 md:w-32 bg-gradient-to-r from-gray-900 to-transparent z-10"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-16 md:w-32 bg-gradient-to-l from-gray-900 to-transparent z-10"></div>
           
           <div className="overflow-hidden py-4">
-            <div className="animate-scroll-left flex">
+            <div className={`flex ${autoplayEnabled ? 'animate-scroll-left' : ''}`}>
               {[...reelsRow2, ...reelsRow2].map((reel, index) => (
                 <ReelCard key={index} reel={reel} />
               ))}
