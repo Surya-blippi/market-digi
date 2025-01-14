@@ -117,93 +117,92 @@ export default function Services() {
       ],
       conclusion: "Branding services are an essential part of any business's growth and success, creating a strong and recognizable brand can help differentiate a business from its competitors and build trust and loyalty with the customers. We will work closely with you to understand your vision, goals, target audience and competitors to create a unique and effective brand that stands out in the market."
     },
-    // Replace the third service in the services array with this:
-{
-  title: "PR & Influencer Management",
-  subtitle: "Build Your Brand's Presence & Reputation",
-  description: "Public relations (PR) and influencer management are closely related practices that involve managing the public image and reputation of a brand or organization. PR is the practice of building and maintaining relationships between a company and its various stakeholders, such as customers, media, and the general public. This includes activities like press releases, media relations, and crisis management.",
-  icon: (
-    <svg className="w-16 h-16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-    </svg>
-  ),
-  features: [
     {
-      title: "Media Relations",
-      description: "Building and maintaining relationships with media outlets, creating press releases, and managing media communications to enhance brand visibility.",
-      icon: "📰"
+      title: "PR & Influencer Management",
+      subtitle: "Build Your Brand's Presence & Reputation",
+      description: "Public relations (PR) and influencer management are closely related practices that involve managing the public image and reputation of a brand or organization. PR is the practice of building and maintaining relationships between a company and its various stakeholders, such as customers, media, and the general public. This includes activities like press releases, media relations, and crisis management.",
+      icon: (
+        <svg className="w-16 h-16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+      ),
+      features: [
+        {
+          title: "Media Relations",
+          description: "Building and maintaining relationships with media outlets, creating press releases, and managing media communications to enhance brand visibility.",
+          icon: "📰"
+        },
+        {
+          title: "Crisis Management",
+          description: "Developing and implementing strategies to handle and mitigate potential reputation risks and crisis situations effectively.",
+          icon: "🛡️"
+        },
+        {
+          title: "Influencer Outreach",
+          description: "Identifying and partnering with relevant influencers who align with your brand values and can authentically connect with your target audience.",
+          icon: "🤝"
+        },
+        {
+          title: "Campaign Management",
+          description: "Planning, executing, and monitoring influencer marketing campaigns to ensure maximum impact and ROI.",
+          icon: "📈"
+        },
+        {
+          title: "Content Strategy",
+          description: "Developing content strategies that align with both PR objectives and influencer partnerships for consistent brand messaging.",
+          icon: "📝"
+        },
+        {
+          title: "Performance Analytics",
+          description: "Monitoring and measuring the impact of PR and influencer campaigns to refine strategies and maximize return on investment.",
+          icon: "📊"
+        }
+      ],
+      conclusion: "Both PR and influencer management are important aspects of a comprehensive marketing strategy and can be used to increase brand awareness, drive sales, and establish a positive reputation. Successful PR and influencer management requires a deep understanding of the target audience, as well as the ability to identify and collaborate with the right influencers and media outlets to reach them."
     },
     {
-      title: "Crisis Management",
-      description: "Developing and implementing strategies to handle and mitigate potential reputation risks and crisis situations effectively.",
-      icon: "🛡️"
-    },
-    {
-      title: "Influencer Outreach",
-      description: "Identifying and partnering with relevant influencers who align with your brand values and can authentically connect with your target audience.",
-      icon: "🤝"
-    },
-    {
-      title: "Campaign Management",
-      description: "Planning, executing, and monitoring influencer marketing campaigns to ensure maximum impact and ROI.",
-      icon: "📈"
-    },
-    {
-      title: "Content Strategy",
-      description: "Developing content strategies that align with both PR objectives and influencer partnerships for consistent brand messaging.",
-      icon: "📝"
-    },
-    {
-      title: "Performance Analytics",
-      description: "Monitoring and measuring the impact of PR and influencer campaigns to refine strategies and maximize return on investment.",
-      icon: "📊"
+      title: "Digital Marketing & Social Media",
+      subtitle: "Amplify Your Online Presence",
+      description: "Digital marketing and social media management are essential components for business growth in today's digital age. Our comprehensive digital marketing strategies combine data-driven insights with creative expertise to enhance your brand's online visibility, engage your target audience, and drive measurable results across all digital channels.",
+      icon: (
+        <svg className="w-16 h-16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      ),
+      features: [
+        {
+          title: "Social Media Strategy",
+          description: "Creating comprehensive social media strategies tailored to your brand voice, target audience, and business objectives across multiple platforms.",
+          icon: "📱"
+        },
+        {
+          title: "Content Creation & Management",
+          description: "Developing engaging, platform-specific content including graphics, videos, and copy that resonates with your audience and drives engagement.",
+          icon: "✍️"
+        },
+        {
+          title: "Paid Advertising",
+          description: "Managing targeted advertising campaigns across Google Ads, Facebook, Instagram, LinkedIn, and other platforms to maximize ROI.",
+          icon: "💰"
+        },
+        {
+          title: "Analytics & Reporting",
+          description: "Providing detailed insights and regular reports on campaign performance, audience engagement, and ROI metrics.",
+          icon: "📊"
+        },
+        {
+          title: "Community Management",
+          description: "Active engagement with your social media community, including responding to comments, messages, and building meaningful relationships with followers.",
+          icon: "💬"
+        },
+        {
+          title: "SEO & Content Marketing",
+          description: "Implementing search engine optimization strategies and creating valuable content to improve organic visibility and drive targeted traffic.",
+          icon: "🎯"
+        }
+      ],
+      conclusion: "Effective digital marketing and social media management are crucial for establishing a strong online presence and connecting with your target audience. Our team combines strategic thinking with creative execution to deliver measurable results that help your business grow in the digital landscape."
     }
-  ],
-  conclusion: "Both PR and influencer management are important aspects of a comprehensive marketing strategy and can be used to increase brand awareness, drive sales, and establish a positive reputation. Successful PR and influencer management requires a deep understanding of the target audience, as well as the ability to identify and collaborate with the right influencers and media outlets to reach them."
-},
-{
-  title: "Digital Marketing & Social Media",
-  subtitle: "Amplify Your Online Presence",
-  description: "Digital marketing and social media management are essential components for business growth in today's digital age. Our comprehensive digital marketing strategies combine data-driven insights with creative expertise to enhance your brand's online visibility, engage your target audience, and drive measurable results across all digital channels.",
-  icon: (
-    <svg className="w-16 h-16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-    </svg>
-  ),
-  features: [
-    {
-      title: "Social Media Strategy",
-      description: "Creating comprehensive social media strategies tailored to your brand voice, target audience, and business objectives across multiple platforms.",
-      icon: "📱"
-    },
-    {
-      title: "Content Creation & Management",
-      description: "Developing engaging, platform-specific content including graphics, videos, and copy that resonates with your audience and drives engagement.",
-      icon: "✍️"
-    },
-    {
-      title: "Paid Advertising",
-      description: "Managing targeted advertising campaigns across Google Ads, Facebook, Instagram, LinkedIn, and other platforms to maximize ROI.",
-      icon: "💰"
-    },
-    {
-      title: "Analytics & Reporting",
-      description: "Providing detailed insights and regular reports on campaign performance, audience engagement, and ROI metrics.",
-      icon: "📊"
-    },
-    {
-      title: "Community Management",
-      description: "Active engagement with your social media community, including responding to comments, messages, and building meaningful relationships with followers.",
-      icon: "💬"
-    },
-    {
-      title: "SEO & Content Marketing",
-      description: "Implementing search engine optimization strategies and creating valuable content to improve organic visibility and drive targeted traffic.",
-      icon: "🎯"
-    }
-  ],
-  conclusion: "Effective digital marketing and social media management are crucial for establishing a strong online presence and connecting with your target audience. Our team combines strategic thinking with creative execution to deliver measurable results that help your business grow in the digital landscape."
-}
   ];
 
   return (
@@ -221,32 +220,27 @@ export default function Services() {
           <span className="text-primary-orange font-semibold text-lg uppercase tracking-widest">
             Our Services
           </span>
-          <h2 className="text-5xl sm:text-6xl font-bold mt-3 mb-6 text-white">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mt-3 mb-6 text-white">
             What We <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-orange to-primary-yellow">Offer</span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto font-light">
+          <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto font-light">
             Comprehensive digital solutions tailored to elevate your business
           </p>
         </div>
 
         {/* Service Navigation */}
-        <div className="flex flex-wrap justify-center mb-16 gap-4">
+        <div className="flex flex-nowrap overflow-x-auto sm:flex-wrap justify-start sm:justify-center mb-16 gap-4 pb-4 sm:pb-0 scrollbar-hide">
           {services.map((service, index) => (
             <button
               key={index}
               onClick={() => setActiveService(index)}
-              className={`group relative px-8 py-3 transition-all duration-300 ${
+              className={`flex-none sm:flex-initial px-6 sm:px-8 py-3 transition-all duration-300 rounded-lg ${
                 activeService === index
-                  ? 'text-primary-orange'
-                  : 'text-gray-400 hover:text-white'
+                  ? 'bg-primary-orange/10 text-primary-orange'
+                  : 'text-gray-400 hover:text-white hover:bg-white/5'
               }`}
             >
-              <span className="relative z-10 text-lg font-medium">{service.title}</span>
-              <div className={`absolute inset-0 rounded-lg bg-white/5 transform transition-all duration-300 ${
-                activeService === index
-                  ? 'opacity-100 scale-100'
-                  : 'opacity-0 scale-95'
-              }`}></div>
+              <span className="relative z-10 text-base sm:text-lg font-medium whitespace-nowrap">{service.title}</span>
             </button>
           ))}
         </div>
@@ -264,51 +258,51 @@ export default function Services() {
             >
               <div className="bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden">
                 {/* Service Header */}
-                <div className={`relative p-8 text-white`}>
-                  <div className="flex items-center space-x-6">
+                <div className="p-6 sm:p-8 text-white">
+                  <div className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-6">
                     <div className="flex-shrink-0 transform transition-transform duration-300 hover:scale-110 text-primary-orange">
                       {service.icon}
                     </div>
                     <div>
-                      <h3 className="text-3xl font-bold">{service.title}</h3>
-                      <p className="text-xl mt-2 text-white/80">{service.subtitle}</p>
+                      <h3 className="text-2xl sm:text-3xl font-bold text-white">{service.title}</h3>
+                      <p className="text-lg sm:text-xl mt-2 text-white/80">{service.subtitle}</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Service Content */}
-                <div className="p-8 border-t border-white/10">
-                  <p className="text-lg text-gray-300 leading-relaxed mb-8">
+                <div className="p-6 sm:p-8 border-t border-white/10">
+                  <p className="text-base sm:text-lg text-gray-300 leading-relaxed mb-8">
                     {service.description}
                   </p>
 
                   {service.features && (
                     <div className="space-y-8">
-                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
                         {service.features.map((feature, featureIndex) => (
                           <div
                             key={featureIndex}
                             className={`group transition-all duration-300 ${
                               hoveredFeature === `${serviceIndex}-${featureIndex}`
-                                ? 'scale-105'
+                                ? 'scale-102 sm:scale-105'
                                 : ''
                             }`}
                             onMouseEnter={() => setHoveredFeature(`${serviceIndex}-${featureIndex}`)}
                             onMouseLeave={() => setHoveredFeature(null)}
                           >
                             <div 
-                              className="bg-white/5 backdrop-blur-sm rounded-xl p-6 cursor-pointer transition-all duration-300 hover:bg-white/10"
+                              className="bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 cursor-pointer transition-all duration-300 hover:bg-white/10"
                               onClick={() => toggleFeature(serviceIndex, featureIndex)}
                             >
                               <div className="flex items-start space-x-4">
-                                <span className="text-2xl transform transition-transform duration-300 group-hover:scale-125">
+                                <span className="text-xl sm:text-2xl transform transition-transform duration-300 group-hover:scale-125">
                                   {feature.icon}
                                 </span>
                                 <div className="flex-1">
-                                  <h4 className="text-xl font-semibold text-white/90 mb-2 flex items-center justify-between">
+                                  <h4 className="text-lg sm:text-xl font-semibold text-white mb-2 flex items-center justify-between">
                                     {feature.title}
                                     <svg
-                                      className={`w-5 h-5 transform transition-transform duration-300 ${
+                                      className={`w-4 h-4 sm:w-5 sm:h-5 transform transition-transform duration-300 ${
                                         activeFeatures[`${serviceIndex}-${featureIndex}`] ? 'rotate-180' : ''
                                       }`}
                                       fill="none"
@@ -323,7 +317,7 @@ export default function Services() {
                                       ? 'max-h-96 opacity-100'
                                       : 'max-h-0 opacity-0'
                                   }`}>
-                                    <p className="text-gray-400 leading-relaxed">
+                                    <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
                                       {feature.description}
                                     </p>
                                   </div>
@@ -335,8 +329,8 @@ export default function Services() {
                       </div>
 
                       {service.conclusion && (
-                        <div className="bg-white/5 backdrop-blur-sm p-8 rounded-xl">
-                          <p className="text-gray-400 leading-relaxed italic">
+                        <div className="bg-white/5 backdrop-blur-sm p-6 sm:p-8 rounded-xl">
+                          <p className="text-sm sm:text-base text-gray-300 leading-relaxed italic">
                             "{service.conclusion}"
                           </p>
                         </div>
