@@ -107,23 +107,9 @@ export default function Footer() {
 
         {/* Copyright Section */}
         <div className="mt-12 pt-8 border-t border-gray-800">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-gray-400 text-sm">
-              &copy; {new Date().getFullYear()} Markbiz Digital. All rights reserved.
-            </p>
-            <div className="flex space-x-6 text-sm">
-              {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((item) => (
-                <a
-                  key={item}
-                  href="#"
-                  className="text-gray-400 hover:text-white relative group transition-all duration-300"
-                >
-                  {item}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-orange group-hover:w-full transition-all duration-300"></span>
-                </a>
-              ))}
-            </div>
-          </div>
+          <p className="text-center text-gray-400 text-sm">
+            &copy; {new Date().getFullYear()} Markbiz Digital. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
