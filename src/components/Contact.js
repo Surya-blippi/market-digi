@@ -77,8 +77,93 @@ export default function Contact() {
             Your Partner in <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-orange to-primary-yellow">Tech Lead Generation</span>
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto font-light">
-            In the fast-paced world of technology, connecting with the right prospects is crucial. That's where Markbiz LeadUp steps in.
+            In the fast-paced world of technology, connecting with the right prospects is crucial. That's where Markbiz LeadUp steps in, delivering tailored lead generation services designed exclusively for the technology industry.
           </p>
+          
+          {/* Introduction Section */}
+          <div className="mt-16 text-left bg-white/5 backdrop-blur-sm rounded-2xl p-8">
+            <p className="text-gray-300 mb-6">
+              At Markbiz LeadUp, we don't just generate leads; we create opportunities. Our team of Specialized Sales Development Representatives (SDRs), backed by a dedicated data mining team, ensures precision in targeting and outreach. With a strong technology background, our SDRs understand the nuances of your industry, enabling them to engage potential clients effectively and articulate your value proposition with impact.
+            </p>
+          </div>
+
+          {/* How We Help Section */}
+          <div className="mt-12 grid md:grid-cols-2 gap-8">
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8">
+              <h3 className="text-2xl font-semibold text-white mb-6">How We Help You Succeed</h3>
+              <div className="space-y-6">
+                <div className="flex items-start">
+                  <span className="text-primary-orange mr-3 mt-1">✓</span>
+                  <div>
+                    <h4 className="text-white font-medium mb-2">Targeted Lead Generation</h4>
+                    <p className="text-gray-400">Leveraging data-driven insights, we identify, qualify, and nurture leads that perfectly match your target audience and market strategy.</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <span className="text-primary-orange mr-3 mt-1">✓</span>
+                  <div>
+                    <h4 className="text-white font-medium mb-2">Enhanced Sales Conversations</h4>
+                    <p className="text-gray-400">With a combination of data-backed insights and technical expertise, our SDRs ensure every interaction is tailored and impactful.</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <span className="text-primary-orange mr-3 mt-1">✓</span>
+                  <div>
+                    <h4 className="text-white font-medium mb-2">Scalable Growth Support</h4>
+                    <p className="text-gray-400">Whether you're a startup or an enterprise, our flexible approach scales to meet your growth objectives.</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <span className="text-primary-orange mr-3 mt-1">✓</span>
+                  <div>
+                    <h4 className="text-white font-medium mb-2">Strategic Market Alignment</h4>
+                    <p className="text-gray-400">By integrating our data mining team's outputs into our outreach, we ensure that your leads are not only relevant but strategically aligned to drive business success.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8">
+              <h3 className="text-2xl font-semibold text-white mb-6">Why Markbiz LeadUp?</h3>
+              <div className="space-y-6">
+                <div className="flex items-start">
+                  <span className="text-primary-orange mr-3 mt-1">✓</span>
+                  <div>
+                    <h4 className="text-white font-medium mb-2">Tech-Savvy SDRs</h4>
+                    <p className="text-gray-400">Our SDRs are experts in navigating complex tech discussions, ensuring meaningful and productive conversations with prospects.</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <span className="text-primary-orange mr-3 mt-1">✓</span>
+                  <div>
+                    <h4 className="text-white font-medium mb-2">Data-Driven Precision</h4>
+                    <p className="text-gray-400">Our SDRs collaborate closely with our data mining team, which generates datasets tailored to fit and match your go-to-market strategy.</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <span className="text-primary-orange mr-3 mt-1">✓</span>
+                  <div>
+                    <h4 className="text-white font-medium mb-2">Extended Sales & Marketing Team</h4>
+                    <p className="text-gray-400">We operate as a seamless extension of your team, representing your brand with professionalism and passion while carrying forward your vision.</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <span className="text-primary-orange mr-3 mt-1">✓</span>
+                  <div>
+                    <h4 className="text-white font-medium mb-2">Brand-Centric Approach</h4>
+                    <p className="text-gray-400">Your brand's values and goals are central to everything we do, ensuring every interaction enhances your reputation and creates lasting impressions.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Partner Message */}
+          <div className="mt-12 text-center bg-white/5 backdrop-blur-sm rounded-2xl p-8">
+            <p className="text-gray-300">
+              At Markbiz LeadUp, we're more than just a lead generation service—we're your partner in building relationships that drive sustainable growth. Let us help you connect with the right clients, amplify your brand, and achieve your business goals.
+            </p>
+          </div>
         </div>
 
         <div className="flex justify-center mb-16 space-x-8">
@@ -222,44 +307,7 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Why Choose Us Section */}
-            <div className="mt-16 bg-white/5 backdrop-blur-sm rounded-2xl p-8">
-              <h3 className="text-2xl font-semibold text-white mb-6 text-center">Why Markbiz LeadUp?</h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-4">
-                  <div className="flex items-start">
-                    <span className="text-primary-orange mr-3 mt-1">✓</span>
-                    <div>
-                      <h4 className="text-white font-medium mb-2">Tech-Savvy SDRs</h4>
-                      <p className="text-gray-400">Our SDRs are experts in navigating complex tech discussions, ensuring meaningful and productive conversations with prospects.</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start">
-                    <span className="text-primary-orange mr-3 mt-1">✓</span>
-                    <div>
-                      <h4 className="text-white font-medium mb-2">Data-Driven Precision</h4>
-                      <p className="text-gray-400">Our SDRs collaborate with our data mining team to generate datasets tailored to your go-to-market strategy.</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="space-y-4">
-                  <div className="flex items-start">
-                    <span className="text-primary-orange mr-3 mt-1">✓</span>
-                    <div>
-                      <h4 className="text-white font-medium mb-2">Dedicated Account Managers</h4>
-                      <p className="text-gray-400">Your growth is our priority. Our account managers work hand-in-hand with your team, providing seamless communication.</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start">
-                    <span className="text-primary-orange mr-3 mt-1">✓</span>
-                    <div>
-                      <h4 className="text-white font-medium mb-2">Brand-Centric Approach</h4>
-                      <p className="text-gray-400">Your brand's values and goals are central to everything we do, ensuring every interaction enhances your reputation.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
           </div>
 
           {/* Contact Form */}
