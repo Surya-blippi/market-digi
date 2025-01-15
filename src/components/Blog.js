@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';  // Added Image import
 import { blogPosts } from '@/data/blogPosts';
 
 export default function Blog() {
@@ -56,34 +57,47 @@ export default function Blog() {
               style={{ transitionDelay: `${index * 200}ms` }}
             >
               <Link href={`/blog/${blog.id}`}>
-                <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden cursor-pointer p-8 border border-gray-100 hover:border-primary-orange/20">
-                  {/* Category and Read Time */}
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-sm font-medium text-primary-orange px-3 py-1 bg-primary-orange/10 rounded-full">
-                      {blog.category}
-                    </span>
-                    <span className="text-sm text-gray-500">{blog.readTime}</span>
+                <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden cursor-pointer border border-gray-100 hover:border-primary-orange/20">
+                  {/* Image Container */}
+                  <div className="relative w-full h-48 overflow-hidden">
+                    <Image
+                      src={blog.image}
+                      alt={blog.title}
+                      fill
+                      className="object-cover transform group-hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
+                  
+                  {/* Content Container */}
+                  <div className="p-8">
+                    {/* Category and Read Time */}
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-sm font-medium text-primary-orange px-3 py-1 bg-primary-orange/10 rounded-full">
+                        {blog.category}
+                      </span>
+                      <span className="text-sm text-gray-500">{blog.readTime}</span>
+                    </div>
 
-                  {/* Title and Excerpt */}
-                  <h3 className="text-2xl font-bold mb-4 text-gray-900 group-hover:text-primary-orange transition-colors duration-300">
-                    {blog.title}
-                  </h3>
+                    {/* Title and Excerpt */}
+                    <h3 className="text-2xl font-bold mb-4 text-gray-900 group-hover:text-primary-orange transition-colors duration-300">
+                      {blog.title}
+                    </h3>
 
-                  <p className="text-gray-600 mb-6 line-clamp-3">
-                    {blog.excerpt}
-                  </p>
+                    <p className="text-gray-600 mb-6 line-clamp-3">
+                      {blog.excerpt}
+                    </p>
 
-                  {/* Read More Link */}
-                  <div className="inline-flex items-center text-primary-orange font-semibold group-hover:translate-x-2 transition-transform duration-300">
-                    Read Article
-                    <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
+                    {/* Read More Link */}
+                    <div className="inline-flex items-center text-primary-orange font-semibold group-hover:translate-x-2 transition-transform duration-300">
+                      Read Article
+                      <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </div>
+
+                    {/* Decorative Elements */}
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary-orange/5 to-primary-yellow/5 rounded-bl-full -z-10 transition-all duration-300 group-hover:scale-150"></div>
                   </div>
-
-                  {/* Decorative Elements */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary-orange/5 to-primary-yellow/5 rounded-bl-full -z-10 transition-all duration-300 group-hover:scale-150"></div>
                 </div>
               </Link>
             </div>

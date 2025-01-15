@@ -4,7 +4,8 @@ export default function ReelShowcase() {
   const [isVisible, setIsVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [autoplayEnabled, setAutoplayEnabled] = useState(true);
-
+  const observer = useRef(null);
+  
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -27,12 +28,36 @@ export default function ReelShowcase() {
       }
     };
 
+    // Initialize Intersection Observer for videos
+    observer.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.target.tagName === 'VIDEO') {
+            // Load video when it comes into view
+            if (entry.isIntersecting) {
+              const video = entry.target;
+              video.src = video.dataset.src;
+              video.load();
+              observer.current.unobserve(video);
+            }
+          }
+        });
+      },
+      {
+        rootMargin: '50px 0px',
+        threshold: 0.1
+      }
+    );
+
     window.addEventListener('scroll', handleScroll);
     handleScroll();
 
     return () => {
       window.removeEventListener('resize', checkMobile);
       window.removeEventListener('scroll', handleScroll);
+      if (observer.current) {
+        observer.current.disconnect();
+      }
     };
   }, []);
 
@@ -57,13 +82,19 @@ export default function ReelShowcase() {
     const [isPlaying, setIsPlaying] = useState(false);
     const [showPlayButton, setShowPlayButton] = useState(true);
 
+    useEffect(() => {
+      if (videoRef.current && observer.current) {
+        observer.current.observe(videoRef.current);
+      }
+    }, []);
+
     const handleVideoLoad = () => {
       setIsLoaded(true);
     };
 
     const handleInteraction = (e) => {
       e.preventDefault();
-      if (!videoRef.current) return;
+      if (!videoRef.current || !videoRef.current.src) return;
 
       if (!isPlaying) {
         const playPromise = videoRef.current.play();
@@ -107,15 +138,13 @@ export default function ReelShowcase() {
             loop
             muted
             playsInline
-            preload={isMobile ? "metadata" : "auto"}
+            data-src={reel.video}
             onLoadedData={handleVideoLoad}
-            poster={`${reel.video.split('.')[0]}.jpg`}
-          >
-            <source src={reel.video} type="video/mp4" />
-          </video>
+            preload="none"
+          />
           
           {/* Mobile Play Button */}
-          {isMobile && showPlayButton && (
+          {isMobile && showPlayButton && isLoaded && (
             <div className="absolute inset-0 flex items-center justify-center bg-black/30">
               <div className="w-12 h-12 flex items-center justify-center rounded-full bg-primary-orange/80">
                 <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
