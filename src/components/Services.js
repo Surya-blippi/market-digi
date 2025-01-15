@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export default function Services() {
+export default function Services({ setActiveSection }) {
   const [isVisible, setIsVisible] = useState(false);
   const [activeService, setActiveService] = useState(0);
   const [activeFeatures, setActiveFeatures] = useState({});
@@ -212,7 +212,6 @@ export default function Services() {
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary-orange to-transparent"></div>
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
         <div className={`text-center mb-20 transition-all duration-700 transform ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
@@ -227,7 +226,6 @@ export default function Services() {
           </p>
         </div>
 
-        {/* Service Navigation */}
         <div className="flex flex-wrap justify-center mb-16 gap-4">
           {services.map((service, index) => (
             <button
@@ -249,7 +247,6 @@ export default function Services() {
           ))}
         </div>
 
-        {/* Active Service Content */}
         <div className="space-y-16">
           {services.map((service, serviceIndex) => (
             <div
@@ -261,7 +258,6 @@ export default function Services() {
               }`}
             >
               <div className="bg-gray-800/95 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl">
-                {/* Service Header */}
                 <div className="p-8 text-white">
                   <div className="flex items-center space-x-6">
                     <div className="flex-shrink-0 transform transition-transform duration-300 hover:scale-110 text-primary-orange">
@@ -274,7 +270,6 @@ export default function Services() {
                   </div>
                 </div>
 
-                {/* Service Content */}
                 <div className="p-8 border-t border-gray-700">
                   <p className="text-lg text-gray-300 leading-relaxed mb-8">
                     {service.description}
@@ -287,65 +282,100 @@ export default function Services() {
                           <div
                             key={featureIndex}
                             className={`group transition-all duration-300 ${
-                              hoveredFeature === `${serviceIndex}-${featureIndex}`? 'scale-105'
+                              hoveredFeature === `${serviceIndex}-${featureIndex}` ? 'scale-105'
                               : ''
-                          }`}
-                          onMouseEnter={() => setHoveredFeature(`${serviceIndex}-${featureIndex}`)}
-                          onMouseLeave={() => setHoveredFeature(null)}
-                        >
-                          <div 
-                            className="bg-gray-700/50 backdrop-blur-sm rounded-xl p-6 cursor-pointer transition-all duration-300 hover:bg-gray-600/50"
-                            onClick={() => toggleFeature(serviceIndex, featureIndex)}
+                            }`}
+                            onMouseEnter={() => setHoveredFeature(`${serviceIndex}-${featureIndex}`)}
+                            onMouseLeave={() => setHoveredFeature(null)}
                           >
-                            <div className="flex items-start space-x-4">
-                              <span className="text-2xl transform transition-transform duration-300 group-hover:scale-125">
-                                {feature.icon}
-                              </span>
-                              <div className="flex-1">
-                                <h4 className="text-xl font-semibold text-white mb-2 flex items-center justify-between">
-                                  {feature.title}
-                                  <svg
-                                    className={`w-5 h-5 transform transition-transform duration-300 ${
-                                      activeFeatures[`${serviceIndex}-${featureIndex}`] ? 'rotate-180' : ''
-                                    }`}
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                  >
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                                  </svg>
-                                </h4>
-                                <div className={`overflow-hidden transition-all duration-300 ${
-                                  activeFeatures[`${serviceIndex}-${featureIndex}`]
-                                    ? 'max-h-96 opacity-100'
-                                    : 'max-h-0 opacity-0'
-                                }`}>
-                                  <p className="text-gray-300 leading-relaxed">
-                                    {feature.description}
-                                  </p>
+                            <div 
+                              className="bg-gray-700/50 backdrop-blur-sm rounded-xl p-6 cursor-pointer transition-all duration-300 hover:bg-gray-600/50"
+                              onClick={() => toggleFeature(serviceIndex, featureIndex)}
+                            >
+                              <div className="flex items-start space-x-4">
+                                <span className="text-2xl transform transition-transform duration-300 group-hover:scale-125">
+                                  {feature.icon}
+                                </span>
+                                <div className="flex-1">
+                                  <h4 className="text-xl font-semibold text-white mb-2 flex items-center justify-between">
+                                    {feature.title}
+                                    <svg
+                                      className={`w-5 h-5 transform transition-transform duration-300 ${
+                                        activeFeatures[`${serviceIndex}-${featureIndex}`] ? 'rotate-180' : ''
+                                      }`}
+                                      fill="none"
+                                      stroke="currentColor"
+                                      viewBox="0 0 24 24"
+                                    >
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                  </h4>
+                                  <div className={`overflow-hidden transition-all duration-300 ${
+                                    activeFeatures[`${serviceIndex}-${featureIndex}`]
+                                      ? 'max-h-96 opacity-100'
+                                      : 'max-h-0 opacity-0'
+                                  }`}>
+                                    <p className="text-gray-300 leading-relaxed">
+                                      {feature.description}
+                                    </p>
+                                  </div>
                                 </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      ))}
-                    </div>
-
-                    {service.conclusion && (
-                      <div className="bg-gray-700/50 backdrop-blur-sm p-8 rounded-xl">
-                        <p className="text-gray-300 leading-relaxed italic">
-                          "{service.conclusion}"
-                        </p>
+                        ))}
                       </div>
-                    )}
+
+                      {service.conclusion && (
+                        <div className="bg-gray-700/50 backdrop-blur-sm p-8 rounded-xl">
+                          <p className="text-gray-300 leading-relaxed italic">
+                            "{service.conclusion}"
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+
+                {/* CTA Section */}
+                <div className="p-8 bg-gray-700/30 border-t border-gray-700">
+                  <div className="text-center">
+                    <button
+                      onClick={() => {
+                        setActiveSection('form');
+                        setTimeout(() => {
+                          const formElement = document.getElementById('contactForm');
+                          if (formElement) {
+                            const yOffset = -100; // Adjust this value to control how far from the top
+                            const y = formElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                            window.scrollTo({ top: y, behavior: 'smooth' });
+                          }
+                        }, 100);
+                      }}
+                      className="group relative px-8 py-4 bg-primary-orange text-white rounded-xl hover:bg-primary-orange/90 transition-all duration-300 transform hover:scale-105"
+                    >
+                      <span className="flex items-center justify-center space-x-2">
+                        <span className="text-lg font-medium">Get Started with {service.title}</span>
+                        <svg
+                          className="w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-1"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </span>
+                    </button>
+                    <p className="mt-4 text-gray-400 text-sm">
+                      Connect with our team to discuss your {service.title.toLowerCase()} needs
+                    </p>
                   </div>
-                )}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
 }

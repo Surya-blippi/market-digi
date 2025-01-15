@@ -1,3 +1,4 @@
+// pages/index.js
 import Head from 'next/head'
 import { useState } from 'react'
 import Navbar from '@/components/Navbar'
@@ -12,6 +13,8 @@ import LogoCarousel from '@/components/LogoCarousel'
 import MovieShowcase from '@/components/MovieShowcase'
 
 export default function Home() {
+  const [activeSection, setActiveSection] = useState('about'); // Add this state
+
   return (
     <>
       <Head>
@@ -25,8 +28,8 @@ export default function Home() {
         <Hero />
         <LogoCarousel />
         <MovieShowcase />
-        <Services />
-        <Contact />
+        <Services setActiveSection={setActiveSection} /> {/* Pass the prop here */}
+        <Contact activeSection={activeSection} setActiveSection={setActiveSection} /> {/* Pass both props here */}
         <About />
         <Blog />
         <Testimonials />

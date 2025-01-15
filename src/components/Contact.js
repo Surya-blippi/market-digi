@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 
-export default function Contact() {
+export default function Contact({ activeSection: parentActiveSection, setActiveSection: parentSetActiveSection }) {
   const [isVisible, setIsVisible] = useState(false);
-  const [activeSection, setActiveSection] = useState('about');
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -170,16 +169,16 @@ export default function Contact() {
           {['Plans', 'Get Started'].map((tab, index) => (
             <button
               key={tab}
-              onClick={() => setActiveSection(index === 0 ? 'about' : 'form')}
+              onClick={() => parentSetActiveSection(index === 0 ? 'about' : 'form')}
               className={`group relative px-8 py-3 transition-all duration-300 ${
-                (index === 0 ? 'about' : 'form') === activeSection
+                (index === 0 ? 'about' : 'form') === parentActiveSection
                   ? 'text-primary-orange'
                   : 'text-gray-400 hover:text-white'
               }`}
             >
               <span className="relative z-10 text-lg font-medium">{tab}</span>
               <div className={`absolute inset-0 rounded-lg bg-white/5 transform transition-all duration-300 ${
-                (index === 0 ? 'about' : 'form') === activeSection
+                (index === 0 ? 'about' : 'form') === parentActiveSection
                   ? 'opacity-100 scale-100'
                   : 'opacity-0 scale-95'
               }`}></div>
@@ -188,8 +187,9 @@ export default function Contact() {
         </div>
 
         <div className="max-w-6xl mx-auto">
+          {/* Plans Section */}
           <div className={`transition-all duration-500 transform ${
-            activeSection === 'about'
+            parentActiveSection === 'about'
               ? 'opacity-100 translate-y-0'
               : 'opacity-0 translate-y-10 hidden'
           }`}>
@@ -223,7 +223,7 @@ export default function Contact() {
                   </li>
                 </ul>
                 <div className="text-center">
-                  <button onClick={() => setActiveSection('form')} className="px-6 py-3 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-all duration-300">
+                  <button onClick={() => parentSetActiveSection('form')} className="px-6 py-3 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-all duration-300">
                     Choose Plan
                   </button>
                 </div>
@@ -269,7 +269,7 @@ export default function Contact() {
                   </li>
                 </ul>
                 <div className="text-center">
-                  <button onClick={() => setActiveSection('form')} className="px-6 py-3 bg-primary-orange text-white rounded-lg hover:bg-primary-orange/90 transition-all duration-300">
+                  <button onClick={() => parentSetActiveSection('form')} className="px-6 py-3 bg-primary-orange text-white rounded-lg hover:bg-primary-orange/90 transition-all duration-300">
                     Choose Plan
                   </button>
                 </div>
@@ -300,22 +300,24 @@ export default function Contact() {
                   </li>
                 </ul>
                 <div className="text-center">
-                  <button onClick={() => setActiveSection('form')} className="px-6 py-3 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-all duration-300">
+                  <button onClick={() => parentSetActiveSection('form')} className="px-6 py-3 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-all duration-300">
                     Contact Us
                   </button>
                 </div>
               </div>
             </div>
-
-
           </div>
 
           {/* Contact Form */}
-          <div className={`transition-all duration-500 transform ${
-            activeSection === 'form'
-              ? 'opacity-100 translate-y-0'
-              : 'opacity-0 translate-y-10 hidden'
-          }`}>
+          
+          <div 
+  id="contactForm"
+  className={`transition-all duration-500 transform ${
+    parentActiveSection === 'form'
+      ? 'opacity-100 translate-y-0'
+      : 'opacity-0 translate-y-10 hidden'
+  }`}
+>
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 md:p-12">
               <form onSubmit={handleSubmit} className="space-y-8">
                 <div className="grid md:grid-cols-2 gap-8">
