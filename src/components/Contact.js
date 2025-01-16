@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function Contact({ activeSection: parentActiveSection, setActiveSection: parentSetActiveSection }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -29,21 +29,55 @@ export default function Contact({ activeSection: parentActiveSection, setActiveS
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Function to submit to Google Form
+  const submitToGoogleForm = async (formData) => {
+    // Replace with your actual Google Form URL (change viewform to formResponse)
+    const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSe4eHd4hVcC_e7zGWWccyU_SJB6Oscq5ksavHWtxegN4-n_wg/formResponse';
+    
+    // Replace these with your actual Google Form field IDs
+    const formDataEncoded = new URLSearchParams({
+      'entry.1031380310': formData.name,      // Full Name
+      'entry.1105726563': formData.phone,     // Contact Number
+      'entry.118402492': formData.email,      // Email Address
+      'entry.220581773': formData.companyName, // Company Name
+      'entry.1351809449': formData.industryType, // Industry Type
+      'entry.2118382054': formData.message    // Message
+    }).toString();
+
+    try {
+      const response = await fetch(`${googleFormUrl}?${formDataEncoded}`, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        }
+      });
+      return true;
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      return false;
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      setSubmitStatus('success');
-      setFormData({
-        name: '',
-        phone: '',
-        email: '',
-        companyName: '',
-        industryType: '',
-        message: ''
-      });
+      const success = await submitToGoogleForm(formData);
+      if (success) {
+        setSubmitStatus('success');
+        setFormData({
+          name: '',
+          phone: '',
+          email: '',
+          companyName: '',
+          industryType: '',
+          message: ''
+        });
+      } else {
+        setSubmitStatus('error');
+      }
     } catch (error) {
       setSubmitStatus('error');
     } finally {
@@ -58,7 +92,6 @@ export default function Contact({ activeSection: parentActiveSection, setActiveS
       [e.target.name]: e.target.value
     });
   };
-
   return (
     <section id="contact" className="py-32 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-gray-900 to-black"></div>
@@ -121,7 +154,6 @@ export default function Contact({ activeSection: parentActiveSection, setActiveS
                 </div>
               </div>
             </div>
-
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8">
               <h3 className="text-2xl font-semibold text-white mb-6">Why Markbiz LeadUp?</h3>
               <div className="space-y-6">
@@ -185,7 +217,6 @@ export default function Contact({ activeSection: parentActiveSection, setActiveS
             </button>
           ))}
         </div>
-
         <div className="max-w-6xl mx-auto">
           {/* Plans Section */}
           <div className={`transition-all duration-500 transform ${
@@ -307,17 +338,15 @@ export default function Contact({ activeSection: parentActiveSection, setActiveS
               </div>
             </div>
           </div>
-
           {/* Contact Form */}
-          
           <div 
-  id="contactForm"
-  className={`transition-all duration-500 transform ${
-    parentActiveSection === 'form'
-      ? 'opacity-100 translate-y-0'
-      : 'opacity-0 translate-y-10 hidden'
-  }`}
->
+            id="contactForm"
+            className={`transition-all duration-500 transform ${
+              parentActiveSection === 'form'
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-10 hidden'
+            }`}
+          >
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 md:p-12">
               <form onSubmit={handleSubmit} className="space-y-8">
                 <div className="grid md:grid-cols-2 gap-8">
