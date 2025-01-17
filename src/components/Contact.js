@@ -30,19 +30,19 @@ export default function Contact({ activeSection: parentActiveSection, setActiveS
   }, []);
 
   // Function to submit to Google Form
-  const submitToGoogleForm = async (formData) => {
-    // Replace with your actual Google Form URL (change viewform to formResponse)
-    const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSe4eHd4hVcC_e7zGWWccyU_SJB6Oscq5ksavHWtxegN4-n_wg/formResponse';
-    
-    // Replace these with your actual Google Form field IDs
-    const formDataEncoded = new URLSearchParams({
-      'entry.1031380310': formData.name,      // Full Name
-      'entry.1105726563': formData.phone,     // Contact Number
-      'entry.118402492': formData.email,      // Email Address
-      'entry.220581773': formData.companyName, // Company Name
-      'entry.1351809449': formData.industryType, // Industry Type
-      'entry.2118382054': formData.message    // Message
-    }).toString();
+const submitToGoogleForm = async (formData) => {
+  // The actual Google Form URL (change viewform to formResponse)
+  const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdBLbG62YK8DAT7MTykDOjCcOPbhANrykFT1q2JdE11DFG2wA/formResponse';
+  
+  // Form field IDs from the actual Google Form
+  const formDataEncoded = new URLSearchParams({
+    'entry.220746229': formData.name,        // Full Name
+    'entry.1748747934': formData.phone,      // Contact Number
+    'entry.1775205673': formData.email,      // Email Address
+    'entry.2100541745': formData.companyName, // Company Name
+    'entry.2074326559': formData.industryType, // Industry Type
+    'entry.1973587326': formData.message     // Message
+  }).toString();
 
     try {
       const response = await fetch(`${googleFormUrl}?${formDataEncoded}`, {
