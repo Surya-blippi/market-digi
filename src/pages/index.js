@@ -28,8 +28,8 @@ export default function Home() {
         <Hero />
         <LogoCarousel />
         <MovieShowcase />
-        <Services setActiveSection={setActiveSection} /> {/* Pass the prop here */}
         <Contact activeSection={activeSection} setActiveSection={setActiveSection} /> {/* Pass both props here */}
+        <Services setActiveSection={setActiveSection} /> {/* Pass the prop here */}
         <About />
         <Blog />
         <Testimonials />

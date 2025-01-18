@@ -27,8 +27,8 @@ export default function Navbar() {
   }, []);
 
   const navItems = [
-    { name: 'Services', href: '#services' },
     { name: 'Markbiz LeadUp', href: '#contact' },
+    { name: 'Services', href: '#services' },
     { name: 'About', href: '#about' },
     { name: 'Blog', href: '#blog' },
     { name: 'Testimonials', href: '#testimonials' }
