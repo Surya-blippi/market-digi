@@ -229,7 +229,7 @@ const submitToGoogleForm = async (formData) => {
               <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:-translate-y-2 transition-all duration-300">
                 <div className="text-center mb-8">
                   <h3 className="text-2xl font-semibold text-white mb-4">Basic</h3>
-                  <div className="text-primary-orange text-4xl font-bold mb-2">$3000<span className="text-lg text-gray-400">/mo</span></div>
+                  <div className="text-primary-orange text-4xl font-bold mb-2"><span className="text-lg text-gray-400"></span></div>
                 </div>
                 <ul className="space-y-4 mb-8">
                   <li className="flex items-center text-gray-300">
@@ -267,7 +267,7 @@ const submitToGoogleForm = async (formData) => {
                 </div>
                 <div className="text-center mb-8">
                   <h3 className="text-2xl font-semibold text-white mb-4">Elite</h3>
-                  <div className="text-primary-orange text-4xl font-bold mb-2">$5500<span className="text-lg text-gray-400">/mo</span></div>
+                  <div className="text-primary-orange text-4xl font-bold mb-2"><span className="text-lg text-gray-400"></span></div>
                 </div>
                 <ul className="space-y-4 mb-8">
                   <li className="flex items-center text-gray-300">
@@ -310,7 +310,7 @@ const submitToGoogleForm = async (formData) => {
               <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:-translate-y-2 transition-all duration-300">
                 <div className="text-center mb-8">
                   <h3 className="text-2xl font-semibold text-white mb-4">Gold</h3>
-                  <div className="text-primary-orange text-xl font-bold mb-2">Pricing on Request</div>
+                  <div className="text-primary-orange text-xl font-bold mb-2"></div>
                 </div>
                 <ul className="space-y-4 mb-8">
                   <li className="flex items-center text-gray-300">
@@ -332,7 +332,7 @@ const submitToGoogleForm = async (formData) => {
                 </ul>
                 <div className="text-center">
                   <button onClick={() => parentSetActiveSection('form')} className="px-6 py-3 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-all duration-300">
-                    Contact Us
+                    Choose Plan
                   </button>
                 </div>
               </div>

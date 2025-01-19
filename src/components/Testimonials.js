@@ -1,4 +1,3 @@
-// src/components/Testimonials.js
 import { useState, useEffect } from 'react';
 
 export default function Testimonials() {
@@ -6,24 +5,21 @@ export default function Testimonials() {
 
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      role: "CEO, TechStart",
-      content: "Markbiz Digital transformed our online presence. Our engagement has increased by 200% since working with them.",
-      image: "/images/testimonial1.jpg",
+      name: "Ayesha Baquer & Hajera Baquer",
+      role: "Co-founders, Gulmohar Boutique & Gulmohar Expo",
+      content: "Markbiz Digital has to be the best digital marketing company we have worked with. With more than 100 thousand followers on Instagram and as a growing brand, we are very particular about teams with creative thinking. That's where Markbiz Digital steps in with its innovative ideas. They have done a fantastic job, from designing cover posters for our expos to making an after-movie of the event. We truly believe they are our go-to digital marketing company for their ability to create unique and original content. We wish to continue with them for our future projects.",
       rating: 5
     },
     {
-      name: "Michael Chen",
-      role: "Marketing Director, GrowthCo",
-      content: "The ROI we've seen from their digital marketing campaigns has been exceptional. Highly recommended!",
-      image: "/images/testimonial2.jpg",
+      name: "Syed Zafar Abbas",
+      role: "Co-founder, Zubi Cricket Academy",
+      content: "We had an amazing time shooting cricket videos with Kareem and his team. They are very particular about the lighting and the angles for every shot. As a professional cricket coach, I am very precise about the technique, as it gives me immense gratification if the final video meets my expectations. Their content creation is top-notch, as they understand the client's requirements to perfection. If you are wondering how to make a business video for your sports academy, they definitely have the best team with the finest equipment.",
       rating: 5
     },
     {
-      name: "Emily Brown",
-      role: "Founder, EcoLife",
-      content: "Their team's creativity and attention to detail have helped us stand out in a crowded market.",
-      image: "/images/testimonial3.jpg",
+      name: "Asif Lakdawala",
+      role: "MD, Ace Auditing",
+      content: "MarkBiz LeadUp services has tranformed our sales and marketing process. Their team of SDR and AM assigned to us were professional in approach and in representing our company's value to the prospects. We continue working with them.",
       rating: 5
     }
   ];
@@ -73,25 +69,13 @@ export default function Testimonials() {
                 animation: 'fade-in-up 0.6s ease-out forwards'
               }}
             >
-              <div className="flex items-center mb-6">
-                <div className="relative">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-16 h-16 rounded-full object-cover ring-4 ring-primary-orange/20"
-                  />
-                  <div className="absolute -bottom-2 -right-2 bg-primary-orange text-white p-1 rounded-full">
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M18 6.59V1h-4.59l-3-3-3 3H3v5.59l-3 3 3 3V18h4.59l3 3 3-3H18v-4.59l3-3-3-3zM15 15h-3.59l-3 3-3-3H3v-3.59l-3-3 3-3V3h3.59l3-3 3 3H15v3.59l3 3-3 3V15z"/>
-                    </svg>
-                  </div>
-                </div>
-                <div className="ml-4">
-                  <h3 className="font-bold text-gray-900 group-hover:text-primary-orange transition-colors duration-300">
+              <div className="mb-6">
+                <div>
+                  <h3 className="font-bold text-xl text-gray-900 group-hover:text-primary-orange transition-colors duration-300">
                     {testimonial.name}
                   </h3>
-                  <p className="text-gray-600">{testimonial.role}</p>
-                  <div className="flex mt-1">
+                  <p className="text-gray-600 mt-1">{testimonial.role}</p>
+                  <div className="flex mt-2">
                     {renderStars(testimonial.rating)}
                   </div>
                 </div>
@@ -100,7 +84,7 @@ export default function Testimonials() {
                 <svg className="absolute -top-6 -left-2 w-12 h-12 text-primary-orange/10 transform -rotate-12" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
                 </svg>
-                <p className="text-gray-600 italic relative z-10">{testimonial.content}</p>
+                <p className="text-gray-600 italic relative z-10 leading-relaxed">{testimonial.content}</p>
               </div>
             </div>
           ))}
@@ -119,21 +103,14 @@ export default function Testimonials() {
                   className="w-full flex-shrink-0 px-4"
                 >
                   <div className="bg-white p-6 rounded-xl shadow-lg">
-                    <div className="flex items-center mb-4">
-                      <img
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        className="w-14 h-14 rounded-full object-cover ring-2 ring-primary-orange/20"
-                      />
-                      <div className="ml-4">
-                        <h3 className="font-bold text-gray-900">{testimonial.name}</h3>
-                        <p className="text-gray-600 text-sm">{testimonial.role}</p>
-                        <div className="flex mt-1">
-                          {renderStars(testimonial.rating)}
-                        </div>
+                    <div className="mb-4">
+                      <h3 className="font-bold text-xl text-gray-900 mb-1">{testimonial.name}</h3>
+                      <p className="text-gray-600">{testimonial.role}</p>
+                      <div className="flex mt-2">
+                        {renderStars(testimonial.rating)}
                       </div>
                     </div>
-                    <p className="text-gray-600 italic">{testimonial.content}</p>
+                    <p className="text-gray-600 italic leading-relaxed">{testimonial.content}</p>
                   </div>
                 </div>
               ))}
