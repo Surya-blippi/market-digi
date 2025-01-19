@@ -125,7 +125,7 @@ export default function LogoCarousel() {
         
         @media (max-width: 768px) {
           .logo-scroll {
-            animation: scroll 15s linear infinite;
+            animation: scroll 30s linear infinite;
           }
         }
 
